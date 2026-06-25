@@ -1,7 +1,8 @@
 "use client";
 
-import React, { createContext, useContext, useState, useCallback } from "react";
+import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
 import { translations, type Locale, type Translations } from "@/i18n/translations";
+import { useRouter, usePathname } from "next/navigation";
 
 interface LangContextValue {
   locale: Locale;
@@ -17,9 +18,24 @@ const LangContext = createContext<LangContextValue>({
   t: defaultT,
 });
 
-export function LangProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocale] = useState<Locale>("es");
-  const t = translations[locale];
+export function LangProvider({ children, initialLocale }: { children: React.ReactNode, initialLocale?: string }) {
+  const [locale, setLocaleState] = useState<Locale>((initialLocale as Locale) || "es");
+  const router = useRouter();
+  const pathname = usePathname();
+  
+  const setLocale = useCallback((l: Locale) => {
+    setLocaleState(l);
+    // Replace the first segment of the path with the new language
+    const segments = pathname.split('/');
+    if (segments.length > 1 && ["en", "es", "zh"].includes(segments[1])) {
+      segments[1] = l;
+      router.push(segments.join('/'));
+    } else {
+      router.push(`/${l}${pathname === '/' ? '' : pathname}`);
+    }
+  }, [pathname, router]);
+
+  const t = translations[locale] || translations.es;
   return (
     <LangContext.Provider value={{ locale, setLocale, t }}>
       {children}

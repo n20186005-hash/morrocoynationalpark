@@ -2,6 +2,9 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { LangProvider } from "@/components/LangProvider";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { useLang } from "@/components/LangProvider";
 
 type CookieCategory = {
   id: string;
@@ -12,7 +15,9 @@ type CookieCategory = {
   alwaysActive?: boolean;
 };
 
-export default function CookiesClient() {
+function CookiesContent({ lang }: { lang: string }) {
+  const { t } = useLang();
+  
   const [cookieSettings, setCookieSettings] = useState<CookieCategory[]>([
     {
       id: "necessary",
@@ -56,7 +61,6 @@ export default function CookiesClient() {
   };
 
   const handleSave = () => {
-    // 这里应该实际保存 cookie 设置
     alert("偏好设置已保存！");
   };
 
@@ -69,14 +73,30 @@ export default function CookiesClient() {
   };
 
   return (
-    <div style={{ minHeight: "100vh", background: "var(--color-cream)", padding: "2rem" }}>
-      <div style={{ maxWidth: "800px", margin: "0 auto", background: "#fff", padding: "3rem", borderRadius: "2px", boxShadow: "0 2px 16px rgba(0,0,0,0.05)" }}>
-        <h1 style={{ fontFamily: "var(--font-display)", fontSize: "2.5rem", color: "var(--color-deep)", marginBottom: "1rem" }}>
-          Cookie 设置
-        </h1>
-        <p style={{ color: "var(--color-stone)", marginBottom: "2rem" }}>
-          最后更新时间：2026年6月
-        </p>
+    <div className="policy-page">
+      <nav className="site-nav scrolled" style={{ background: "var(--color-deep)" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+          <a href="/" style={{ fontFamily: "var(--font-display)", fontSize: "1.2rem", fontWeight: 700, color: "#fff", textDecoration: "none" }}>
+            Parque Nacional Morrocoy
+          </a>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+          <div className="nav-links">
+            <a href={`/${lang}`}>{t.nav.about}</a>
+          </div>
+          <LanguageSwitcher />
+        </div>
+      </nav>
+
+      <main className="policy-content" style={{ marginTop: "80px" }}>
+        <div style={{ minHeight: "100vh", background: "var(--color-cream)", padding: "2rem" }}>
+          <div style={{ maxWidth: "800px", margin: "0 auto", background: "#fff", padding: "3rem", borderRadius: "2px", boxShadow: "0 2px 16px rgba(0,0,0,0.05)" }}>
+            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "2.5rem", color: "var(--color-deep)", marginBottom: "1rem" }}>
+              Cookie 设置
+            </h1>
+            <p style={{ color: "var(--color-stone)", marginBottom: "2rem" }}>
+              最后更新时间：2026年6月
+            </p>
 
         <section style={{ marginBottom: "2rem" }}>
           <p style={{ lineHeight: "1.8", color: "var(--color-earth-soft)", marginBottom: "1.5rem" }}>
@@ -167,11 +187,25 @@ export default function CookiesClient() {
         </div>
 
         <div style={{ marginTop: "3rem", paddingTop: "2rem", borderTop: "1px solid rgba(0,0,0,0.1)" }}>
-          <Link href="/" style={{ color: "var(--color-teal)", textDecoration: "none" }}>
+          <Link href={`/${lang}`} style={{ color: "var(--color-teal)", textDecoration: "none" }}>
             ← 返回首页
           </Link>
         </div>
       </div>
     </div>
+  </main>
+  <footer className="site-footer" style={{ marginTop: "4rem" }}>
+    <p className="footer-text">{t.footer.text}</p>
+    <p className="footer-made">{t.footer.made}</p>
+  </footer>
+</div>
+  );
+}
+
+export default function CookiesClient({ initialLocale }: { initialLocale?: string }) {
+  return (
+    <LangProvider initialLocale={initialLocale}>
+      <CookiesContent lang={initialLocale || 'es'} />
+    </LangProvider>
   );
 }
