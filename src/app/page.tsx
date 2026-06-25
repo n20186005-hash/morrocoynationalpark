@@ -66,7 +66,7 @@ function Hero() {
         <p className="hero-tagline">{t.hero.tagline}</p>
         <h1 className="hero-title">{t.hero.title}</h1>
         <p className="hero-subtitle">{t.hero.subtitle}</p>
-        <a href="#visiting" className="hero-cta">
+        <a href="#utilities" className="hero-cta">
           {t.hero.cta}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M7 17L17 7M17 7H7M17 7V17" />
@@ -116,6 +116,40 @@ function About() {
           <p style={{ fontSize: "0.9rem", lineHeight: "1.7", color: "var(--color-earth-soft)" }}>
             {(t as any).about?.management?.content || "景点目前由当地政府与社区共同管理，门票收入用于维护周边环境和改善游客设施。"}
           </p>
+        </div>
+      </ScrollReveal>
+    </section>
+  );
+}
+
+function IslandCategories() {
+  const { t } = useLang();
+  const c = (t as any).islandCategories;
+  if (!c) return null;
+  return (
+    <section id="islands" className="section" style={{ background: "#fff" }}>
+      <ScrollReveal>
+        <p className="section-label">02</p>
+        <h2 className="section-title">{c.title}</h2>
+        <div className="section-divider" />
+      </ScrollReveal>
+      <ScrollReveal>
+        <div className="transport-grid">
+          <div className="transport-card">
+            <div className="transport-icon">👨‍👩‍👧</div>
+            <h3 className="transport-title">{c.family.title}</h3>
+            <p className="transport-content">{c.family.content}</p>
+          </div>
+          <div className="transport-card">
+            <div className="transport-icon">🤿</div>
+            <h3 className="transport-title">{c.snorkeling.title}</h3>
+            <p className="transport-content">{c.snorkeling.content}</p>
+          </div>
+          <div className="transport-card">
+            <div className="transport-icon">📸</div>
+            <h3 className="transport-title">{c.photography.title}</h3>
+            <p className="transport-content">{c.photography.content}</p>
+          </div>
         </div>
       </ScrollReveal>
     </section>
@@ -227,6 +261,92 @@ function Transportation() {
               <p className="transport-content">{option.content}</p>
             </div>
           ))}
+        </div>
+      </ScrollReveal>
+    </section>
+  );
+}
+
+function UtilitiesAndMap() {
+  const { t } = useLang();
+  const u = (t as any).utilitiesAndMap;
+  if (!u) return null;
+  return (
+    <section id="utilities" className="section" style={{ background: "#f9f9f9" }}>
+      <ScrollReveal>
+        <p className="section-label">04</p>
+        <h2 className="section-title">{u.title}</h2>
+        <div className="section-divider" />
+      </ScrollReveal>
+      
+      <ScrollReveal>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem", marginBottom: "3rem" }}>
+          <div className="transport-card" style={{ background: "#fff", border: "1px solid #eee" }}>
+            <h3 className="transport-title">{u.weather.title}</h3>
+            <div style={{ marginTop: "1rem" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid #eee", paddingBottom: "0.5rem", marginBottom: "0.5rem" }}>
+                <span>{u.weather.today}</span>
+                <strong>{u.weather.temp}</strong>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid #eee", paddingBottom: "0.5rem", marginBottom: "0.5rem" }}>
+                <span>{u.weather.waterTempLabel}</span>
+                <strong>{u.weather.waterTemp}</strong>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid #eee", paddingBottom: "0.5rem", marginBottom: "0.5rem" }}>
+                <span>{u.weather.uvLabel}</span>
+                <strong style={{ color: "#d9534f" }}>{u.weather.uv}</strong>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <span>{u.weather.windLabel}</span>
+                <strong>{u.weather.wind}</strong>
+              </div>
+              <p style={{ fontSize: "0.85rem", color: "#888", marginTop: "1rem" }}>{u.weather.note}</p>
+            </div>
+          </div>
+
+          <div className="transport-card" style={{ background: "#fff", border: "1px solid #eee" }}>
+            <h3 className="transport-title">{u.boatPrices.title}</h3>
+            <div style={{ marginTop: "1rem" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid #eee", paddingBottom: "0.5rem", marginBottom: "0.5rem" }}>
+                <span>{u.boatPrices.cayoMuerto}</span>
+                <strong>{u.boatPrices.cayoMuertoPrice}</strong>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid #eee", paddingBottom: "0.5rem", marginBottom: "0.5rem" }}>
+                <span>{u.boatPrices.cayoSombrero}</span>
+                <strong>{u.boatPrices.cayoSombreroPrice}</strong>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid #eee", paddingBottom: "0.5rem", marginBottom: "0.5rem" }}>
+                <span>{u.boatPrices.losJuanes}</span>
+                <strong>{u.boatPrices.losJuanesPrice}</strong>
+              </div>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <span>{u.boatPrices.shared}</span>
+                <strong>{u.boatPrices.sharedPrice}</strong>
+              </div>
+              <p style={{ fontSize: "0.85rem", color: "#888", marginTop: "1rem" }}>{u.boatPrices.note}</p>
+            </div>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <h3 className="transport-title" style={{ textAlign: "center", marginBottom: "1.5rem" }}>{u.map.title}</h3>
+        <div style={{ 
+          width: "100%", 
+          height: "400px", 
+          background: "url('/gallery/parque-nacional-morrocoy (10).jpg') center/cover", 
+          borderRadius: "8px", 
+          position: "relative",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#fff",
+          textShadow: "0 2px 4px rgba(0,0,0,0.8)"
+        }}>
+          <div style={{ background: "rgba(0,0,0,0.5)", padding: "1rem 2rem", borderRadius: "4px", textAlign: "center" }}>
+            <p>{u.map.hint1}</p>
+            <p style={{ fontSize: "0.9rem", opacity: 0.8 }}>{u.map.hint2}</p>
+          </div>
         </div>
       </ScrollReveal>
     </section>
@@ -480,8 +600,10 @@ export default function Home() {
       <Nav />
       <Hero />
       <About />
+      <IslandCategories />
       <Visiting />
       <Transportation />
+      <UtilitiesAndMap />
       <History />
       <Tips />
       <Gallery />
