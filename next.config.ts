@@ -1,5 +1,7 @@
-const nextConfig = {
-  output: "standalone" as const,
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  output: "standalone",
   webpack: (config, { isServer }) => {
     return config;
   },
