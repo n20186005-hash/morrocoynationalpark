@@ -1198,3 +1198,17 @@ body {
 #explore {
   scroll-margin-top: 5.5rem;
 }
+
+.guide-facts {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-wrap: anywhere;
+}
+
+.guide-facts th,
+.guide-facts td {
+  padding: 0.65rem 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+  text-align: start;
+  vertical-align: top;
+}
