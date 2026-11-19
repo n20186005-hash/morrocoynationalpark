@@ -17,7 +17,7 @@ const parkSource = "https://www.inparques.gob.ve/Parques%20Nacionales/morrocoy.h
 
 export const guides = [
   {
-    slug: "tucacas-beaches",
+    slug: "tucacas-beaches" as const,
     mapQuery: "Playa Punta Brava, Tucacas, Falcón, Venezuela",
     sources: [["INPARQUES", parkSource], ["La Mañana", "https://lamananadigital.com/puente-de-punta-brava-sigue-cerrado/"]],
     copy: {
@@ -54,7 +54,7 @@ export const guides = [
     },
   },
   {
-    slug: "chichiriviche-boat-trips",
+    slug: "chichiriviche-boat-trips" as const,
     mapQuery: "Embarcadero Playa Norte, Chichiriviche, Falcón, Venezuela",
     sources: [["INPARQUES", parkSource], ["Mapcarta", "https://mapcarta.com/es/W447131912"], ["Andaventura", "https://andaventura.com/guia-chichiriviche/"]],
     copy: {
@@ -91,7 +91,7 @@ export const guides = [
     },
   },
   {
-    slug: "cayo-sombrero",
+    slug: "cayo-sombrero" as const,
     mapQuery: "Cayo Sombrero, Parque Nacional Morrocoy, Falcón, Venezuela",
     sources: [["INPARQUES", parkSource]],
     copy: {
@@ -124,6 +124,80 @@ export const guides = [
         steps: ["在图卡卡斯询问直达松布雷罗岛的船，以及往返票价包含哪些项目。", "登岛后先确认回程接送点，再沿岸走一段，选择合适的停留位置。", "遵守现场标示，避免触碰珊瑚，并预留走回集合点的时间。"],
         question: "松布雷罗岛适合当天和其他岛一起游览吗？",
         answer: "如果想在海滩多待一会儿，可选直达船。若要串联多个小岛，订船前问清每站停留时间和回程安排。",
+      },
+    },
+  },
+  {
+    slug: "cayo-sal" as const,
+    mapQuery: "Playa Cayo Sal, Chichiriviche, Falcón, Venezuela",
+    sources: [["INPARQUES", parkSource], ["Mapcarta", "https://mapcarta.com/pt/W374341502"]],
+    copy: {
+      es: {
+        title: "Cayo Sal",
+        intro: "Cayo Sal queda frente a Chichiriviche, al norte de Cayo Muerto. La playa cartografiada en su costa occidental es el destino que conviene identificar al contratar un traslado para pasar el día.",
+        advice: "Desde la playa occidental, busca un encuadre hacia la costa continental. Lleva agua y acuerda el punto de desembarque y de recogida antes de salir, sobre todo si el viaje incluye varias islas.",
+        location: "Playa Cayo Sal, municipio Monseñor Iturriza, Falcón, Venezuela",
+        access: "En lancha desde Chichiriviche. Pregunta por el desembarque en Playa Cayo Sal.",
+        steps: ["En Chichiriviche, pide cotización para la playa de Cayo Sal y confirma que incluya el regreso.", "Al desembarcar, identifica el punto acordado con la tripulación y recorre la orilla accesible.", "Si combinas la visita con Cayo Muerto, confirma cuánto tiempo tendrás en cada isla."],
+        question: "¿Cayo Sal y Cayo Muerto son el mismo cayo?",
+        answer: "Son dos islas distintas. Cayo Sal se encuentra al norte de Cayo Muerto. Acuerda ambas paradas si quieres visitar las dos.",
+      },
+      en: {
+        title: "Cayo Sal",
+        intro: "Cayo Sal lies offshore from Chichiriviche, north of Cayo Muerto. The mapped beach on its west shore is the destination to specify when arranging a day trip.",
+        advice: "From the west-facing beach, look for a view back toward the mainland. Bring drinking water and confirm where you will land and be picked up, especially on a multi-island trip.",
+        location: "Playa Cayo Sal, Monseñor Iturriza municipality, Falcón, Venezuela",
+        access: "By boat from Chichiriviche. Ask to land at Playa Cayo Sal.",
+        steps: ["In Chichiriviche, get a quote for Playa Cayo Sal and ensure it includes the return.", "After landing, locate the agreed pickup point and explore the accessible shore.", "If you add Cayo Muerto, confirm how long you will spend on each island."],
+        question: "Are Cayo Sal and Cayo Muerto the same island?",
+        answer: "They are separate islands. Cayo Sal lies north of Cayo Muerto. Ask for both stops if you want to visit both.",
+      },
+      zh: {
+        title: "盐岛",
+        intro: "盐岛（Cayo Sal）位于奇奇里维切外海、穆埃尔托岛以北。若计划上岛休息或沿岸散步，订船时可直接说明目的地是西岸的盐岛海滩。",
+        advice: "西岸海滩适合朝大陆方向取景。带好饮水，出发前约定下船及回程接送位置，串联多个小岛时尤其要问清。",
+        location: "委内瑞拉法尔孔州蒙塞尼奥尔·伊图里萨市，盐岛海滩",
+        access: "从奇奇里维切乘船，订船时说明要在盐岛海滩下船。",
+        steps: ["在奇奇里维切询问盐岛海滩的往返船价。", "下船后记下约定的接送位置，再沿可通行的沙滩散步。", "若同时安排穆埃尔托岛，先确认每座岛可停留多久。"],
+        question: "盐岛和穆埃尔托岛是同一座岛吗？",
+        answer: "这是两座岛。盐岛在穆埃尔托岛以北，若要都去，订船时须说明两站。",
+      },
+    },
+  },
+  {
+    slug: "cayo-muerto" as const,
+    mapQuery: "Cayo Muerto, Chichiriviche, Falcón, Venezuela",
+    sources: [["INPARQUES", parkSource], ["Mapcarta", "https://mapcarta.com/es/W372845761"]],
+    copy: {
+      es: {
+        title: "Cayo Muerto",
+        intro: "Cayo Muerto es un islote del Parque Nacional Morrocoy frente al malecón de Chichiriviche. Desde el paseo costero se puede observar el islote antes de decidir si contratar el traslado.",
+        advice: "Para una foto de la silueta completa del islote, busca una vista despejada desde el malecón. Si quieres desembarcar, pide una salida directa y confirma el regreso antes de salir.",
+        location: "Frente al malecón de Chichiriviche, municipio Monseñor Iturriza, Falcón, Venezuela",
+        access: "En lancha desde Chichiriviche. El malecón ofrece una vista del islote desde tierra.",
+        steps: ["Ubica el islote desde el malecón y confirma con el operador dónde sale la lancha.", "Pide el traslado a Cayo Muerto de Chichiriviche y acuerda dónde se hará la recogida.", "Al desembarcar, comprueba el punto de retorno antes de alejarte por la orilla."],
+        question: "¿Puedo ver Cayo Muerto sin embarcar?",
+        answer: "Sí. Se ve desde la costa de Chichiriviche. Para visitar la orilla del islote necesitas una lancha.",
+      },
+      en: {
+        title: "Cayo Muerto",
+        intro: "Cayo Muerto is a Morrocoy National Park islet off the Chichiriviche waterfront. You can see it from the promenade before deciding whether to book a crossing.",
+        advice: "For a photograph of the island’s full outline, look for an unobstructed view from the promenade. If you want to land, ask for a direct trip and confirm return arrangements before boarding.",
+        location: "Off the Chichiriviche waterfront, Monseñor Iturriza municipality, Falcón, Venezuela",
+        access: "By boat from Chichiriviche. The waterfront promenade offers a view from land.",
+        steps: ["Locate the islet from the promenade and ask the operator which dock the boat uses.", "Specify Cayo Muerto off Chichiriviche and agree on a pickup point.", "On landing, check where to meet the return boat before walking along the shore."],
+        question: "Can I see Cayo Muerto without taking a boat?",
+        answer: "Yes, it is visible from the Chichiriviche waterfront. To visit the islet itself, arrange a boat.",
+      },
+      zh: {
+        title: "穆埃尔托岛",
+        intro: "穆埃尔托岛（Cayo Muerto）是莫罗科伊国家公园内的小岛，位于奇奇里维切海滨步道对面。可先从岸上观察岛屿，再决定是否搭船登岛。",
+        advice: "若想拍到整座岛的轮廓，可在海滨步道找视线无遮挡的位置。若要登岛，可询问直达船并提前谈妥返程。",
+        location: "委内瑞拉法尔孔州蒙塞尼奥尔·伊图里萨市，奇奇里维切海滨步道对岸",
+        access: "从奇奇里维切乘船登岛，也可从镇上的海滨步道望岛。",
+        steps: ["先从海滨步道辨认岛屿，再向船家确认登船码头。", "明确目的地是奇奇里维切对岸的穆埃尔托岛，并约定回程接送点。", "登岛后确认返程集合点，再沿沙滩散步。"],
+        question: "不坐船也能看到穆埃尔托岛吗？",
+        answer: "可以从奇奇里维切的海滨看见小岛。想登岛必须安排船只。",
       },
     },
   },

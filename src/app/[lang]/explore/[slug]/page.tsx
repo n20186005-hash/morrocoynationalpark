@@ -4,6 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { guideLabels, guides, languages, parkManagement, siteUrl } from "@/i18n/guides";
 
+import { photos, placePins, ratings, visitDetails, visitLabels } from "@/i18n/guide-visits";
+
 type Locale = (typeof languages)[number];
 type Props = { params: Promise<{ lang: string; slug: string }> };
 
@@ -45,7 +47,13 @@ function languageName(locale: Locale) {
 export default async function GuidePage(props: Props) {
   const { locale, guide, copy } = await resolveGuide(props);
   const labels = guideLabels[locale];
-  const map = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(guide.mapQuery)}`;
+  const details = visitLabels[locale];
+  const [transport, hours] = visitDetails[guide.slug][locale];
+  const reviewMap = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(guide.mapQuery)}`;
+  const pin = placePins[guide.slug];
+  const map = pin ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(pin)}` : reviewMap;
+  const rating = ratings[guide.slug];
+  const photo = photos[guide.slug];
 
   return (
     <main className="section attraction-guide">
@@ -61,13 +69,14 @@ export default async function GuidePage(props: Props) {
         <h1 className="section-title">{copy.title}</h1>
         <p className="about-text">{copy.intro}</p>
         <a className="google-maps-btn" href={map} target="_blank" rel="noreferrer">{labels.map}</a>
+        {rating && <p><a href="#reviews">{rating.score.toLocaleString(locale)} / 5 · {rating.count} {details.count}</a></p>}
       </header>
-      {guide.slug === "cayo-sombrero" && (
+      {photo && (
         <figure className="guide-photo">
-          <Image src="/explore/cayo-sombrero.webp" width={800} height={1067} alt={copy.title} unoptimized />
+          <Image src={`/explore/${guide.slug}.webp`} width={photo.width} height={photo.height} alt={copy.title} unoptimized />
           <figcaption>
-            <a href="https://commons.wikimedia.org/wiki/File:Cayo_Sombrero,_Morrocoy.jpg">
-              Hireem / Wikimedia Commons
+            <a href={photo.source}>
+              {photo.credit} / Wikimedia Commons
             </a>
           </figcaption>
         </figure>
@@ -85,7 +94,13 @@ export default async function GuidePage(props: Props) {
         <dl>
           <dt>{labels.place}</dt><dd>{copy.location}</dd>
           <dt>{labels.access}</dt><dd>{copy.access}</dd>
+          <dt>{details.hours}</dt><dd>{hours}</dd>
         </dl>
+      </section>
+      <section>
+        <h2>{details.travel}</h2>
+        <p>{transport}</p>
+        <a href={map}>{labels.map}</a>
       </section>
       <section>
         <h2>{labels.route}</h2>
@@ -95,6 +110,17 @@ export default async function GuidePage(props: Props) {
         <h2>{labels.faq}</h2>
         <h3>{copy.question}</h3>
         <p>{copy.answer}</p>
+      </section>
+      <section id="reviews">
+        <h2>{details.reviews}</h2>
+        {rating ? (
+          <p>
+            <strong>{rating.score.toLocaleString(locale)} / 5 · {rating.count} {details.count}</strong>
+            {" · "}<a href={rating.source}>Google Travel</a>
+            {" · "}{details.checked}
+          </p>
+        ) : <p>{details.lookup}</p>}
+        <a href={reviewMap}>{details.viewReviews}</a>
       </section>
       <section>
         <h2>{labels.related}</h2>
