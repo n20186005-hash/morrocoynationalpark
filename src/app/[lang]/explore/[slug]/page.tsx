@@ -6,6 +6,8 @@ import { guideLabels, guides, languages, parkManagement, siteUrl } from "@/i18n/
 
 import { photos, placePins, ratings, visitDetails, visitLabels } from "@/i18n/guide-visits";
 
+import { nearbyLabels } from "@/i18n/nearby-guides";
+
 type Locale = (typeof languages)[number];
 type Props = { params: Promise<{ lang: string; slug: string }> };
 
@@ -48,7 +50,10 @@ export default async function GuidePage(props: Props) {
   const { locale, guide, copy } = await resolveGuide(props);
   const labels = guideLabels[locale];
   const details = visitLabels[locale];
-  const [transport, hours] = visitDetails[guide.slug][locale];
+  const extra = nearbyLabels[locale];
+  const [transport, hours] = visitDetails[guide.slug]?.[locale] ?? [copy.access, extra.hours];
+  const localCopy = "heritage" in copy ? copy : undefined;
+  const management = guide.slug === "cueva-del-indio" ? extra.cave : parkManagement[locale];
   const reviewMap = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(guide.mapQuery)}`;
   const pin = placePins[guide.slug];
   const map = pin ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(pin)}` : reviewMap;
@@ -71,6 +76,10 @@ export default async function GuidePage(props: Props) {
         <a className="google-maps-btn" href={map} target="_blank" rel="noreferrer">{labels.map}</a>
         {rating && <p><a href="#reviews">{rating.score.toLocaleString(locale)} / 5 · {rating.count} {details.count}</a></p>}
       </header>
+      <section>
+        <h2>{labels.about}</h2>
+        <p>{management}</p>
+      </section>
       {photo && (
         <figure className="guide-photo">
           <Image src={`/explore/${guide.slug}.webp`} width={photo.width} height={photo.height} alt={copy.title} unoptimized />
@@ -81,14 +90,6 @@ export default async function GuidePage(props: Props) {
           </figcaption>
         </figure>
       )}
-      <section>
-        <h2>{labels.advice}</h2>
-        <p>{copy.advice}</p>
-      </section>
-      <section>
-        <h2>{labels.about}</h2>
-        <p>{parkManagement[locale]}</p>
-      </section>
       <section>
         <h2>{labels.facts}</h2>
         <dl>
@@ -103,9 +104,22 @@ export default async function GuidePage(props: Props) {
         <a href={map}>{labels.map}</a>
       </section>
       <section>
+        <h2>{labels.advice}</h2>
+        <p>{copy.advice}</p>
+      </section>
+      {localCopy && (
+        <section>
+          <h2>{extra.heritage}</h2>
+          <p>{localCopy.heritage}</p>
+          <h3>{extra.observation}</h3>
+          <p>{localCopy.observation}</p>
+        </section>
+      )}
+      <section>
         <h2>{labels.route}</h2>
         <ol>{copy.steps.map((step) => <li key={step}>{step}</li>)}</ol>
       </section>
+      {localCopy && <section><h2>{extra.photo}</h2><p>{localCopy.camera}</p></section>}
       <section>
         <h2>{labels.faq}</h2>
         <h3>{copy.question}</h3>

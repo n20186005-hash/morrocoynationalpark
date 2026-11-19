@@ -6,7 +6,7 @@ export const visitLabels = {
   zh: { travel: "交通方式与出发点", hours: "开放时间与费用", reviews: "游客评分与评价", viewReviews: "在 Google 地图查看评价", count: "条评价", checked: "2026 年 11 月 19 日查阅来源，评价数可能变化。", lookup: "可在此地点的地图页面查看已有评价。" },
 };
 
-export const visitDetails = {
+export const visitDetails: Partial<Record<string, Record<"es" | "en" | "zh", readonly [string, string]>>> = {
   "tucacas-beaches": {
     es: ["Llega por carretera a Tucacas. Para Punta Brava, verifica el tramo final con INPARQUES. Si no está habilitado, consulta las salidas de los muelles de Tucacas.", "Comprueba el horario de acceso al puente y pide por separado el precio del traslado si eliges un cayo."],
     en: ["Travel by road to Tucacas. For Punta Brava, check the final stretch with INPARQUES. If the bridge is unavailable, ask about departures from the Tucacas docks.", "Check bridge access hours and ask separately for transfer fares if you opt for a cay."],
@@ -49,4 +49,10 @@ export const photos: Record<string, { width: number; height: number; credit: str
   "cayo-sombrero": { width: 800, height: 1067, credit: "Hireem", source: "https://commons.wikimedia.org/wiki/File:Cayo_Sombrero,_Morrocoy.jpg" },
   "cayo-sal": { width: 800, height: 407, credit: "Rjcastillo", source: "https://commons.wikimedia.org/wiki/File:Cayo_Sal.jpg" },
   "cayo-muerto": { width: 800, height: 378, credit: "Rjcastillo", source: "https://commons.wikimedia.org/wiki/File:Cayo_Muerto_I.jpg" },
+  "boca-seca": { width: 800, height: 1071, credit: "Anthony Guillen", source: "https://commons.wikimedia.org/wiki/File:Entrada_a_Boca_Seca.JPG" },
+  "los-juanes": { width: 800, height: 600, credit: "Yeimy15", source: "https://commons.wikimedia.org/wiki/File:Piscina_Los_Juanes.jpg" },
+  "cayo-playuela": { width: 800, height: 600, credit: "Elianarojas21", source: "https://commons.wikimedia.org/wiki/File:Composici%C3%B3n_perfecta!_Playuela.jpg" },
+  "cayo-peraza": { width: 800, height: 600, credit: "Radikaltech", source: "https://commons.wikimedia.org/wiki/File:CAYO_PERAZA_MORROCOY_VENEZUELA.JPG" },
+  "cayo-pescadores": { width: 800, height: 199, credit: "EndrinAngel", source: "https://commons.wikimedia.org/wiki/File:Playas_Venezolanas.jpg" },
+  "cueva-del-indio": { width: 800, height: 1067, credit: "Yasmira Gil", source: "https://commons.wikimedia.org/wiki/File:Cueva_de_los_Indios._P.N._Morrocoy.jpg" },
 };

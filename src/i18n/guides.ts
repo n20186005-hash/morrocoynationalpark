@@ -1,3 +1,5 @@
+import { nearbyGuides } from "./nearby-guides";
+
 export const languages = ["es", "en", "zh"] as const;
 export const siteUrl = "https://www.morrocoynationalpark.com";
 
@@ -201,6 +203,7 @@ export const guides = [
       },
     },
   },
+  ...nearbyGuides,
 ];
 
 export const parkManagement = {
