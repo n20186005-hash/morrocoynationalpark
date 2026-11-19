@@ -15,7 +15,7 @@ export const translations = {
     hero: {
       tagline: "加勒比海岸的珊瑚礁天堂",
       title: "莫罗科伊国家公园",
-      subtitle: "Parque Nacional Morrocoy",
+      subtitle: "委内瑞拉法尔孔州 · 加勒比海岸",
       cta: "探索自然奇观",
     },
     rating: {
@@ -91,9 +91,9 @@ export const translations = {
     },
     location: {
       title: "位置与交通",
-      address: "Tucacas 4101, Falcón, 委内瑞拉",
-      mapHint: "点击地图在 Google Maps 中打开",
-      openMaps: "在 Google Maps 中查看",
+      address: "委内瑞拉法尔孔州图卡卡斯 4101",
+      mapHint: "点击地图在 Google 地图 中打开",
+      openMaps: "在 Google 地图 中查看",
     },
     contact: {
       title: "联系方式",
@@ -113,13 +113,13 @@ export const translations = {
     },
     gallery: {
       title: "精彩照片",
-      viewMore: "在 Google Maps 查看更多相片",
+      viewMore: "在 Google 地图 查看更多相片",
     },
     reviews: {
       title: "游客评价",
-      subtitle: "来自 Google Maps 的真实评价",
+      subtitle: "在 Google 地图查看游客评价",
       loadMore: "查看更多评价",
-      viewMore: "在 Google Maps 查看更多评价",
+      viewMore: "在 Google 地图 查看更多评价",
     },
     faq: {
       title: "常见问题",
@@ -127,7 +127,9 @@ export const translations = {
       items: [
         {
           question: "莫罗科伊国家公园最值得去的珊瑚岛是哪些？",
-          answer: "最受欢迎的珊瑚岛包括：\n\n1. Cayo Sombrero — 拥有最完善的设施（餐厅、卫生间、遮阳棚），沙滩洁白，海水清澈，适合家庭游客。\n\n2. Cayo Muerto — 生态环境保持较好，适合浮潜和安静地享受海滩。\n\n3. Cayo Sal — 最大的特色是其岛屿中心有一个天然盐湖（Salina），许多游客认为这里的盐泥有护肤功效。此外，岛上基础设施非常完善。\n\n4. Cayo Pelón — “Pelón” 在西班牙语中意为“秃的”。这个岛实际上是一个完全没有植被、没有树荫的纯白沙洲。必须提醒：岛上没有任何遮挡物或树木，必须自带遮阳伞和充足的防晒装备。\n\n建议提前规划行程，因为游船通常上午出发，下午返回。"
+          answer: "最受欢迎的珊瑚岛包括：",
+          points: ["Cayo Sombrero — 拥有最完善的设施（餐厅、卫生间、遮阳棚），沙滩洁白，海水清澈，适合家庭游客。", "Cayo Muerto — 生态环境保持较好，适合浮潜和安静地享受海滩。", "Cayo Sal — 最大的特色是其岛屿中心有一个天然盐湖（Salina），许多游客认为这里的盐泥有护肤功效。此外，岛上基础设施非常完善。", "Cayo Pelón — “Pelón” 在西班牙语中意为“秃的”。这个岛实际上是一个完全没有植被、没有树荫的纯白沙洲。必须提醒：岛上没有任何遮挡物或树木，必须自带遮阳伞和充足的防晒装备。"],
+          closing: "建议提前规划行程，因为游船通常上午出发，下午返回。"
         },
         {
           question: "当地治安如何？在沙滩上物品安全吗？",
@@ -143,7 +145,9 @@ export const translations = {
         },
         {
           question: "如何进入莫罗科伊国家公园？",
-          answer: "主要有两种方式：\n\n1. 从图卡卡斯（Tucacas）入口 — 这是最主要、设施最完善的入口，适合大多数游客。从这里可以方便地找到游船前往各个珊瑚岛。\n\n2. 从奇奇里维切（Chichiriviche）入口 — 位于公园西部，相对安静，也有一些游船运营商。\n\n两个入口都需要先到游客中心登记并支付门票。建议早上8点前到达，以避开人群和高温。"
+          answer: "主要有两种方式：",
+          points: ["从图卡卡斯（Tucacas）入口 — 这是最主要、设施最完善的入口，适合大多数游客。从这里可以方便地找到游船前往各个珊瑚岛。", "从奇奇里维切（Chichiriviche）入口 — 位于公园西部，相对安静，也有一些游船运营商。"],
+          closing: "两个入口都需要先到游客中心登记并支付门票。建议早上8点前到达，以避开人群和高温。"
         },
         {
           question: "需要提前预订吗？",
@@ -166,7 +170,7 @@ export const translations = {
         { name: "法尔孔州政府", url: "https://gobernacion.falcon.gob.ve/" },
         { name: "世界保护区数据库", url: "https://www.protectedplanet.net/" },
         { name: "国际湿地公约信息系统", url: "https://rsis.ramsar.org/" },
-        { name: "委内瑞拉非盈利生态保护NGO", url: "https://www.provita.org.ve/" },
+        { name: "委内瑞拉非营利生态保护组织", url: "https://www.provita.org.ve/" },
       ],
     },
   },
@@ -184,7 +188,7 @@ export const translations = {
     hero: {
       tagline: "Caribbean Coral Reef Paradise",
       title: "Morrocoy National Park",
-      subtitle: "Parque Nacional Morrocoy",
+      subtitle: "Falcón, Venezuela · Caribbean Coast",
       cta: "Explore the Natural Wonder",
     },
     rating: {
@@ -286,7 +290,7 @@ export const translations = {
     },
     reviews: {
       title: "Visitor Reviews",
-      subtitle: "Real reviews from Google Maps",
+      subtitle: "Read visitor reviews on Google Maps",
       loadMore: "Load more reviews",
       viewMore: "View More Reviews on Google Maps",
     },
@@ -296,7 +300,9 @@ export const translations = {
       items: [
         {
           question: "Which cays are most worth visiting in Morrocoy National Park?",
-          answer: "The most popular cays include:\n\n1. Cayo Sombrero — The most well-equipped cay (restaurants, restrooms, shade structures), with white sand and clear water, ideal for families.\n\n2. Cayo Muerto — Better preserved ecological environment, suitable for snorkeling and quiet beach enjoyment.\n\n3. Cayo Sal — The biggest feature is its natural salt lake (Salina) in the center, and many tourists believe the salt mud has skin care benefits. It also has excellent infrastructure.\n\n4. Cayo Pelón — 'Pelón' means 'bald' in Spanish. This island is actually a pure white sandbank completely devoid of vegetation and shade. Warning: Must bring your own umbrella and plenty of sun protection.\n\nIt is recommended to plan your itinerary in advance, as boats usually depart in the morning and return in the afternoon."
+          answer: "The most popular cays include:",
+          points: ["Cayo Sombrero — The most well-equipped cay (restaurants, restrooms, shade structures), with white sand and clear water, ideal for families.", "Cayo Muerto — Better preserved ecological environment, suitable for snorkeling and quiet beach enjoyment.", "Cayo Sal — The biggest feature is its natural salt lake (Salina) in the center, and many tourists believe the salt mud has skin care benefits. It also has excellent infrastructure.", "Cayo Pelón — 'Pelón' means 'bald' in Spanish. This island is actually a pure white sandbank completely devoid of vegetation and shade. Warning: Must bring your own umbrella and plenty of sun protection."],
+          closing: "It is recommended to plan your itinerary in advance, as boats usually depart in the morning and return in the afternoon."
         },
         {
           question: "How is the local security? Are belongings safe on the beach?",
@@ -312,7 +318,9 @@ export const translations = {
         },
         {
           question: "How do I get into Morrocoy National Park?",
-          answer: "There are two main access points:\n\n1. Tucacas Entrance — This is the main and best-equipped entrance, suitable for most visitors. From here you can easily find boats to the various cays.\n\n2. Chichiriviche Entrance — Located in the western part of the park, quieter, with some boat operators.\n\nBoth entrances require registration at the visitor center and payment of entrance fees. Arriving before 8:00 AM is recommended to avoid crowds and heat."
+          answer: "There are two main access points:",
+          points: ["Tucacas Entrance — This is the main and best-equipped entrance, suitable for most visitors. From here you can easily find boats to the various cays.", "Chichiriviche Entrance — Located in the western part of the park, quieter, with some boat operators."],
+          closing: "Both entrances require registration at the visitor center and payment of entrance fees. Arriving before 8:00 AM is recommended to avoid crowds and heat."
         },
         {
           question: "Do I need to book in advance?",
@@ -353,7 +361,7 @@ export const translations = {
     hero: {
       tagline: "Paraíso de Arrecifes de Coral del Caribe",
       title: "Parque Nacional Morrocoy",
-      subtitle: "Parque Nacional Morrocoy",
+      subtitle: "Falcón, Venezuela · Costa del Caribe",
       cta: "Explora la Maravilla Natural",
     },
     rating: {
@@ -455,7 +463,7 @@ export const translations = {
     },
     reviews: {
       title: "Reseñas de Visitantes",
-      subtitle: "Reseñas reales de Google Maps",
+      subtitle: "Lee las reseñas de visitantes en Google Maps",
       loadMore: "Ver más reseñas",
       viewMore: "Ver Más Reseñas en Google Maps",
     },
@@ -465,7 +473,9 @@ export const translations = {
       items: [
         {
           question: "¿Cuáles son los cayos más vale la pena visitar en el Parque Nacional Morrocoy?",
-          answer: "Los cayos más populares incluyen:\n\n1. Cayo Sombrero — El cayo más equipado (restaurantes, baños, estructuras de sombra), con arena blanca y agua cristalina, ideal para familias.\n\n2. Cayo Muerto — Mejor preservado ecológicamente, adecuado para snorkel y disfrutar de la playa en tranquillidad.\n\n3. Cayo Sal — La mayor característica es su lago de sal natural (Salina) en el centro, y muchos turistas creen que el lodo de sal tiene beneficios para la piel. También cuenta con excelente infraestructura.\n\n4. Cayo Pelón — Como su nombre indica, esta isla es en realidad un banco de arena blanca pura completamente sin vegetación ni sombra. Advertencia: Debe traer su propia sombrilla y abundante protección solar.\n\nSe recomienda planificar el itinerario con anticipación, ya que los botes generalmente salen por la mañana y regresan por la tarde."
+          answer: "Los cayos más populares incluyen:",
+          points: ["Cayo Sombrero — El cayo más equipado (restaurantes, baños, estructuras de sombra), con arena blanca y agua cristalina, ideal para familias.", "Cayo Muerto — Mejor preservado ecológicamente, adecuado para snorkel y disfrutar de la playa en tranquilidad.", "Cayo Sal — La mayor característica es su lago de sal natural (Salina) en el centro, y muchos turistas creen que el lodo de sal tiene beneficios para la piel. También cuenta con excelente infraestructura.", "Cayo Pelón — Como su nombre indica, esta isla es en realidad un banco de arena blanca pura completamente sin vegetación ni sombra. Advertencia: Debe traer su propia sombrilla y abundante protección solar."],
+          closing: "Se recomienda planificar el itinerario con anticipación, ya que los botes generalmente salen por la mañana y regresan por la tarde."
         },
         {
           question: "¿Cómo es la seguridad local? ¿Están seguras las pertenencias en la playa?",
@@ -481,7 +491,9 @@ export const translations = {
         },
         {
           question: "¿Cómo entro al Parque Nacional Morrocoy?",
-          answer: "Hay dos puntos de acceso principales:\n\n1. Entrada de Tucacas — Esta es la entrada principal y mejor equipada, adecuada para la mayoría de los visitantes. Desde aquí puede encontrar fácilmente botes a los diversos cayos.\n\n2. Entrada de Chichiriviche — Ubicada en la parte occidental del parque, más tranquila, con algunos operadores de botes.\n\nAmbas entradas requieren registro en el centro de visitantes y pago de tarifas de entrada. Se recomienda llegar antes de las 8:00 AM para evitar multitudes y el calor."
+          answer: "Hay dos puntos de acceso principales:",
+          points: ["Entrada de Tucacas — Esta es la entrada principal y mejor equipada, adecuada para la mayoría de los visitantes. Desde aquí puede encontrar fácilmente botes a los diversos cayos.", "Entrada de Chichiriviche — Ubicada en la parte occidental del parque, más tranquila, con algunos operadores de botes."],
+          closing: "Ambas entradas requieren registro en el centro de visitantes y pago de tarifas de entrada. Se recomienda llegar antes de las 8:00 AM para evitar multitudes y el calor."
         },
         {
           question: "¿Necesito reservar con anticipación?",
@@ -512,7 +524,7 @@ export const translations = {
 
 export type LinkItem = { name: string; url: string };
 
-export type FAQItem = { question: string; answer: string };
+export type FAQItem = { question: string; answer: string; points?: string[]; closing?: string };
 
 export type Translations = {
   nav: { about: string; visiting: string; transportation: string; history: string; location: string; tips: string; reviews: string; faq: string };

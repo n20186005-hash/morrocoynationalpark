@@ -7,6 +7,7 @@ import { guideLabels, guides, languages, parkManagement, siteUrl } from "@/i18n/
 import { photos, placePins, ratings, visitDetails, visitLabels } from "@/i18n/guide-visits";
 
 import { bridgeSource, discovery, fareSource, planning, profileLabels, profiles, reportedFare } from "@/i18n/guide-profile";
+import { sourceLabels, ui } from "@/i18n/ui";
 import { nearbyLabels } from "@/i18n/nearby-guides";
 
 type Locale = (typeof languages)[number];
@@ -38,7 +39,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         "x-default": `${siteUrl}/en${path}`,
       },
     },
-    openGraph: { title: copy.title, description: copy.intro, url: canonical, type: "article" },
+    openGraph: { title: copy.title, description: copy.intro, url: canonical, siteName: ui[locale].site, type: "article" },
     twitter: { card: "summary", title: copy.title, description: copy.intro },
   };
 }
@@ -185,8 +186,8 @@ export default async function GuidePage(props: Props) {
       <section>
         <h2>{labels.sources}</h2>
         <ul>{(["cayo-sal", "cayo-muerto"].includes(guide.slug)) && (
-          <li><a href="https://musguito.net.ve/anapro/ecosig.org.ve/pdf/V_PN_Morocoy_DC.pdf">Decreto 113</a></li>
-        )}{guide.sources.map(([name, url]) => <li key={url}><a href={url}>{name}</a></li>)}</ul>
+          <li><a href="https://musguito.net.ve/anapro/ecosig.org.ve/pdf/V_PN_Morocoy_DC.pdf">{sourceLabels["Decreto 113"][locale]}</a></li>
+        )}{guide.sources.map(([name, url]) => <li key={url}><a href={url}>{sourceLabels[name]?.[locale] ?? name}</a></li>)}</ul>
       </section>
     </main>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useLang } from "./LangProvider";
+import { ui } from "@/i18n/ui";
 import type { Locale } from "@/i18n/translations";
 
 const LANG_LABELS: Record<Locale, string> = {
@@ -18,7 +19,9 @@ export function LanguageSwitcher() {
           key={l}
           className={`lang-btn ${locale === l ? "active" : ""}`}
           onClick={() => setLocale(l)}
-          aria-label={`Switch to ${l}`}
+          aria-label={ui[locale].switchTo[l]}
+          aria-pressed={locale === l}
+          lang={l}
         >
           {LANG_LABELS[l]}
         </button>

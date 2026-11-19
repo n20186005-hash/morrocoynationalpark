@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "../globals.css";
 import { homeSeo, languages, siteUrl } from "@/i18n/guides";
+import { ui } from "@/i18n/ui";
 import { notFound } from "next/navigation";
 
 const cormorant = Cormorant_Garamond({
@@ -24,29 +25,18 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const baseUrl = siteUrl;
   const locale = languages.find((value) => value === lang) ?? "en";
   const [title, description] = homeSeo[locale];
-  
+  const labels = ui[locale];
+
   return {
     metadataBase: new URL(baseUrl),
     title: {
       default: title,
-      template: "%s | Parque Nacional Morrocoy",
+      template: `%s | ${labels.park}`,
     },
     description,
-    keywords: [
-      "Parque Nacional Morrocoy",
-      "Morrocoy National Park",
-      "Venezuela travel",
-      "Caribbean beaches",
-      "coral reefs",
-      "Falcón tourism",
-      "cayos",
-      "snorkeling",
-      "diving",
-      "mangroves",
-    ],
-    authors: [{ name: "Parque Nacional Morrocoy Travel Guide" }],
-    creator: "Parque Nacional Morrocoy Travel Guide",
-    publisher: "Parque Nacional Morrocoy Travel Guide",
+    authors: [{ name: labels.site }],
+    creator: labels.site,
+    publisher: labels.site,
     formatDetection: {
       email: false,
       address: false,
@@ -59,13 +49,13 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       url: `${baseUrl}/${lang}`,
       title,
       description,
-      siteName: "Parque Nacional Morrocoy Travel Guide",
+      siteName: labels.site,
       images: [
         {
           url: "/gallery/parque-nacional-morrocoy (1).jpg",
           width: 1200,
           height: 630,
-          alt: "Parque Nacional Morrocoy - Caribbean National Park",
+          alt: labels.photo,
         },
       ],
     },
@@ -73,7 +63,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       card: "summary_large_image",
       title,
       description,
-      images: ["/gallery/parque-nacional-morrocoy (1).jpg"],
+      images: [{ url: "/gallery/parque-nacional-morrocoy (1).jpg", alt: labels.photo }],
     },
     robots: {
       index: true,

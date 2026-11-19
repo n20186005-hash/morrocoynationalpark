@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+import { policyMetadata } from "../PolicyPage";
 import CookiesClient from "./CookiesClient";
 
-export const metadata: Metadata = {
-  title: "Cookie 设置 | Pozos Azules 旅行指南",
-  description: "管理您的 Cookie 偏好设置",
-};
+type Props = { params: Promise<{ lang: string }> };
 
-export default async function CookiesPage({ params }: { params: Promise<{ lang: string }> }) {
-  const { lang } = await params;
-  return <CookiesClient initialLocale={lang} />;
+export function generateMetadata(props: Props) {
+  return policyMetadata(props, "cookies");
+}
+
+export default async function Page(props: Props) {
+  return <CookiesClient initialLocale={(await props.params).lang} />;
 }
