@@ -46,6 +46,8 @@ export const ratings: Record<string, { score: number; count: number; source: str
 };
 
 export const photos: Record<string, { width: number; height: number; credit: string; source: string }> = {
+  "chichiriviche-boat-trips": { width: 960, height: 720, credit: "Elisagartro", source: "https://commons.wikimedia.org/wiki/File:Malec%C3%B3n_de_Chichiriviche,_estado_Falc%C3%B3n._Venezuela.JPG" },
+  "tucacas-beaches": { width: 960, height: 720, credit: "Jhonatanro", source: "https://commons.wikimedia.org/wiki/File:Parque_Nacional_Morrocoy_-_Punta_Brava_6.jpg" },
   "cayo-sombrero": { width: 800, height: 1067, credit: "Hireem", source: "https://commons.wikimedia.org/wiki/File:Cayo_Sombrero,_Morrocoy.jpg" },
   "cayo-sal": { width: 800, height: 407, credit: "Rjcastillo", source: "https://commons.wikimedia.org/wiki/File:Cayo_Sal.jpg" },
   "cayo-muerto": { width: 800, height: 378, credit: "Rjcastillo", source: "https://commons.wikimedia.org/wiki/File:Cayo_Muerto_I.jpg" },
