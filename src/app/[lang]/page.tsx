@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { LangProvider, useLang } from "@/components/LangProvider";
+import Link from "next/link";
+import { guideLabels, guides } from "@/i18n/guides";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 const MAPS_URL = "https://maps.app.goo.gl/f2iQdFCmohQUGbZLA";
@@ -152,6 +154,26 @@ function IslandCategories() {
           </div>
         </div>
       </ScrollReveal>
+    </section>
+  );
+}
+
+function ExploreGuides() {
+  const { locale } = useLang();
+  return (
+    <section id="explore" className="section">
+      <h2 className="section-title">{guideLabels[locale].explore}</h2>
+      <div className="section-divider" />
+      <div className="transport-grid">
+        {guides.map(({ slug, copy }) => (
+          <article className="transport-card" key={slug}>
+            <h3 className="transport-title">
+              <Link href={`/${locale}/explore/${slug}`}>{copy[locale].title}</Link>
+            </h3>
+            <p className="transport-content">{copy[locale].intro}</p>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }
@@ -602,6 +624,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <Hero />
       <About />
       <IslandCategories />
+      <ExploreGuides />
       <Visiting />
       <Transportation />
       <UtilitiesAndMap />
