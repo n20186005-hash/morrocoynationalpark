@@ -1,17 +1,15 @@
 export const dynamic = 'force-static';
 
 import { MetadataRoute } from 'next';
+import { guides, languages, siteUrl } from '@/i18n/guides';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = `https://${process.env.CURRENT_SITE_DOMAIN || "morrocoynationalpark.com"}`;
-
-  const languages = ['en', 'es', 'zh'];
-  const routes = ['', '/privacy', '/terms', '/cookies'];
+  const baseUrl = siteUrl;
+  const routes = ['', '/privacy', '/terms', '/cookies', ...guides.map(({ slug }) => `/explore/${slug}`)];
 
   const sitemapEntries = routes.flatMap((route) => {
     return languages.map((lang) => ({
       url: `${baseUrl}/${lang}${route}`,
-      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: route === '' ? 1 : 0.8,
       alternates: {

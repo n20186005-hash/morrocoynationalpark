@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "../globals.css";
+import { homeSeo, languages, siteUrl } from "@/i18n/guides";
+import { notFound } from "next/navigation";
 
 const cormorant = Cormorant_Garamond({
   weight: ["400", "600", "700"],
@@ -19,16 +21,17 @@ const dmSans = DM_Sans({
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
-  const baseUrl = `https://${process.env.CURRENT_SITE_DOMAIN || "morrocoynationalpark.com"}`;
+  const baseUrl = siteUrl;
+  const locale = languages.find((value) => value === lang) ?? "en";
+  const [title, description] = homeSeo[locale];
   
   return {
     metadataBase: new URL(baseUrl),
     title: {
-      default: "Parque Nacional Morrocoy — Falcón, Venezuela",
+      default: title,
       template: "%s | Parque Nacional Morrocoy",
     },
-    description:
-      "A travel guide to Parque Nacional Morrocoy, the stunning Caribbean coastal national park in Falcón, Venezuela, featuring coral reefs, mangroves, and tropical dry forests.",
+    description,
     keywords: [
       "Parque Nacional Morrocoy",
       "Morrocoy National Park",
@@ -54,9 +57,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       locale: lang === "es" ? "es_VE" : lang === "zh" ? "zh_CN" : "en_US",
       alternateLocale: ["en_US", "es_VE", "zh_CN"].filter(l => !l.startsWith(lang)),
       url: `${baseUrl}/${lang}`,
-      title: "Parque Nacional Morrocoy — Falcón, Venezuela",
-      description:
-        "A travel guide to Parque Nacional Morrocoy, the stunning Caribbean coastal national park in Falcón, Venezuela.",
+      title,
+      description,
       siteName: "Parque Nacional Morrocoy Travel Guide",
       images: [
         {
@@ -69,9 +71,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     },
     twitter: {
       card: "summary_large_image",
-      title: "Parque Nacional Morrocoy — Falcón, Venezuela",
-      description:
-        "A travel guide to Parque Nacional Morrocoy, the stunning Caribbean coastal national park in Falcón, Venezuela.",
+      title,
+      description,
       images: ["/gallery/parque-nacional-morrocoy (1).jpg"],
     },
     robots: {
@@ -103,7 +104,7 @@ export const viewport: Viewport = {
 };
 
 export async function generateStaticParams() {
-  return [{ lang: "en" }, { lang: "es" }, { lang: "zh" }];
+  return languages.map((lang) => ({ lang }));
 }
 
 export default async function RootLayout({
@@ -114,6 +115,7 @@ export default async function RootLayout({
   params: Promise<{ lang: string }>;
 }>) {
   const { lang } = await params;
+  if (!languages.some((value) => value === lang)) notFound();
   return (
     <html lang={lang} className={`${cormorant.variable} ${dmSans.variable}`}>
       <body>{children}</body>

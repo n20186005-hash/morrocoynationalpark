@@ -2,6 +2,9 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { LangProvider, useLang } from "@/components/LangProvider";
+import Link from "next/link";
+import { nearbyLabels } from "@/i18n/nearby-guides";
+import { guides } from "@/i18n/guides";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 const MAPS_URL = "https://maps.app.goo.gl/f2iQdFCmohQUGbZLA";
@@ -24,7 +27,7 @@ function ScrollReveal({ children, className = "" }: { children: React.ReactNode;
 }
 
 function Nav() {
-  const { t } = useLang();
+  const { t, locale } = useLang();
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -40,6 +43,7 @@ function Nav() {
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
         <div className="nav-links">
+          <a href="#explore">{nearbyLabels[locale].nearby}</a>
           <a href="#about">{t.nav.about}</a>
           <a href="#visiting">{t.nav.visiting}</a>
           <a href="#transportation">{t.nav.transportation}</a>
@@ -56,7 +60,7 @@ function Nav() {
 }
 
 function Hero() {
-  const { t } = useLang();
+  const { t, locale } = useLang();
   return (
     <section className="hero">
       <div className="hero-bg" />
@@ -72,6 +76,7 @@ function Hero() {
             <path d="M7 17L17 7M17 7H7M17 7V17" />
           </svg>
         </a>
+        <a href="#explore" className="hero-nearby">{nearbyLabels[locale].nearby}</a>
       </div>
       <div className="hero-meta">
         <div className="hero-rating">4.7</div>
@@ -152,6 +157,26 @@ function IslandCategories() {
           </div>
         </div>
       </ScrollReveal>
+    </section>
+  );
+}
+
+function ExploreGuides() {
+  const { locale } = useLang();
+  return (
+    <section id="explore" className="section">
+      <h2 className="section-title">{nearbyLabels[locale].nearby}</h2>
+      <div className="section-divider" />
+      <div className="transport-grid">
+        {guides.map(({ slug, copy }) => (
+          <article className="transport-card" key={slug}>
+            <h3 className="transport-title">
+              <Link href={`/${locale}/explore/${slug}`}>{copy[locale].title}</Link>
+            </h3>
+            <p className="transport-content">{copy[locale].intro}</p>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }
@@ -602,6 +627,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <Hero />
       <About />
       <IslandCategories />
+      <ExploreGuides />
       <Visiting />
       <Transportation />
       <UtilitiesAndMap />

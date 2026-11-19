@@ -1134,3 +1134,67 @@ body {
     padding: 1.25rem;
   }
 }
+
+.attraction-guide {
+  max-width: 820px;
+}
+
+.attraction-guide section {
+  margin-top: 2rem;
+}
+
+.attraction-guide h2,
+.attraction-guide h3 {
+  font-family: var(--font-display);
+  color: var(--color-deep);
+  margin-bottom: 0.5rem;
+}
+
+.attraction-guide li,
+.attraction-guide dd {
+  margin-bottom: 0.65rem;
+}
+
+.attraction-guide ol,
+.attraction-guide ul {
+  padding-inline-start: 1.5rem;
+}
+
+.attraction-guide dt {
+  font-weight: 600;
+}
+
+.attraction-guide .guide-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.attraction-guide a:not(.google-maps-btn) {
+  color: var(--color-deep);
+  text-decoration: underline;
+}
+
+.guide-photo {
+  margin-top: 1.5rem;
+}
+
+.guide-photo img {
+  display: block;
+  width: min(100%, 480px);
+  height: auto;
+}
+
+.hero-nearby {
+  display: block;
+  width: fit-content;
+  margin: 0.85rem auto 0;
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+#explore {
+  scroll-margin-top: 5.5rem;
+}
